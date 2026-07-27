@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Каталог продукции Longqing | ООО "ВИРА"</title>
+<style>
+:root {
+  --primary: #0a2540;
+  --accent: #00d4aa;
+  --accent-dark: #00b894;
+  --bg: #f6f9fc;
+  --card: #ffffff;
+  --text: #1a1a2e;
+  --text-light: #5a6a7a;
+  --border: #e1e8ed;
+  --shadow: 0 10px 40px rgba(10,37,64,0.08);
+  --shadow-hover: 0 20px 60px rgba(10,37,64,0.12);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+header {
+  background: linear-gradient(135deg, var(--primary) 0%, #0d3b66 100%);
+  color: white;
+  padding: 40px 0 60px;
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,212,170,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.header-content { position: relative; z-index: 1; }
+.badge {
+  display: inline-block;
+  background: rgba(0,212,170,0.2);
+  color: var(--accent);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  border: 1px solid rgba(0,212,170,0.3);
+}
+h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 12px; line-height: 1.2; }
+.subtitle { font-size: 1.15rem; opacity: 0.9; max-width: 700px; }
+.rep-info {
+  margin-top: 28px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.rep-info strong { color: var(--accent); font-size: 1.1rem; }
+.rep-info span { font-size: 0.95rem; opacity: 0.9; }
+
+/* Sticky Nav */
+nav {
+  background: var(--card);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-container a {
+  padding: 16px 14px;
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+}
+.nav-container a:hover, .nav-container a.active {
+  color: var(--accent-dark);
+  border-bottom-color: var(--accent);
+}
+
+/* Sections */
+.section {
+  padding: 60px 0;
+}
+.section:nth-child(even) { background: white; }
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.section-num {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+h2 { font-size: 1.9rem; font-weight: 700; color: var(--primary); }
+.section-desc { color: var(--text-light); margin-top: 8px; max-width: 700px; }
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 36px;
+}
+.gallery img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.gallery img:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Features */
+.features {
+  background: linear-gradient(135deg, #f0fdf9 0%, #f6f9fc 100%);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 28px;
+}
+.features h3 {
+  font-size: 1.15rem;
+  color: var(--primary);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.features h3::before {
+  content: '✓';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.8rem;
+}
+.features ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px 24px;
+  list-style: none;
+}
+.features li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+.features li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 10px;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.btn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,212,170,0.3);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--border);
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+  box-shadow: none;
+}
+
+/* Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,37,64,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  padding: 40px 20px;
+  overflow-y: auto;
+  animation: fadeIn 0.2s ease;
+}
+.modal-overlay.active { display: flex; align-items: flex-start; justify-content: center; }
+.modal {
+  background: white;
+  border-radius: 24px;
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.2);
+  overflow: hidden;
+  animation: slideUp 0.3s ease;
+}
+.modal-header {
+  background: var(--primary);
+  color: white;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-header h3 { font-size: 1.3rem; font-weight: 700; }
+.modal-close {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-close:hover { background: rgba(255,255,255,0.3); }
+.modal-body { padding: 32px; overflow-x: auto; }
+
+/* Table */
+.table-wrapper { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 600px;
+}
+.spec-table caption {
+  caption-side: top;
+  text-align: left;
+  font-weight: 700;
+  color: var(--primary);
+  padding: 0 0 12px 4px;
+  font-size: 1rem;
+}
+.spec-table th {
+  background: #f0f4f8;
+  color: var(--primary);
+  font-weight: 600;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+.spec-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-light);
+}
+.spec-table tr:hover td { background: #f8fafc; }
+.spec-table tr:nth-child(even) td { background: #fafbfc; }
+.spec-table tr:nth-child(even):hover td { background: #f0f4f8; }
+
+/* Footer */
+footer {
+  background: var(--primary);
+  color: rgba(255,255,255,0.7);
+  padding: 40px 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+footer strong { color: white; }
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  .gallery { grid-template-columns: 1fr 1fr; }
+  .gallery img { height: 180px; }
+  .features ul { grid-template-columns: 1fr; }
+  .modal-body { padding: 20px; }
+}
+@media (max-width: 480px) {
+  .gallery { grid-template-columns: 1fr; }
+  .btn { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="container header-content">
+    <div class="badge">Официальный каталог 2026</div>
+    <h1>Shandong Longqing Heavy Industry Co., Ltd.</h1>
+    <p class="subtitle">Высокотехнологичное предприятие, специализирующееся на интеллектуальном экологичном оборудовании для высотных работ. Полный производственный цикл, индивидуальные решения и круглосуточное обслуживание.</p>
+    <div class="rep-info">
+      <strong>Официальный представитель: ООО "ВИРА"</strong>
+      <span>📞 Тел.: +7(423)256-47-21</span>
+      <span>✉ Email: virare@mail.ru</span>
+    </div>
+  </div>
+</header>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-container">
+    <a href="#sec01">01 Коленчатые</a>
+    <a href="#sec02">02 Ножничные</a>
+    <a href="#sec03">03 Гусеничные</a>
+    <a href="#sec04">04 Мачтовые</a>
+    <a href="#sec05">05 Трехколесные</a>
+    <a href="#sec06">06 Мини-погрузчики</a>
+  </div>
+</nav>
+
+<!-- Section 01 -->
+<section class="section" id="sec01">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-num">01</div>
+        <h2>Коленчатые подъемники</h2>
+        <p class="section-desc">Самоходные подъемные платформы с шарнирно-сочлененной стрелой для высотных работ в труднодоступных местах.</p>
+      </div>
+    </div>
+    <div class="gallery">
+      <img src="images/K1.png" alt="Коленчатый подъемник K1" loading="lazy">
+      <img src="images/K2.jpg" alt="Коленчатый подъемник K2" loading="lazy">
+      <img src="images/K3.png" alt="Коленчатый подъемник K3" loading="lazy">
+      <img src="images/K4.jpg" alt="Коленчатый подъемник K4" loading="lazy">
+    </div>
+    <div class="features">
+      <h3>Особенности и системы безопасности</h3>
+      <ul>
+        <li>Двухосевое вращение джойстика</li>
+        <li>Голосовые оповещения</li>
+        <li>Система защиты от опрокидывания</li>
+        <li>Звуковое предупреждение (сирена и зуммер)</li>
+        <li>Шины с пенным наполнителем (опционально безследные шины)</li>
+        <li>Система экстренной остановки</li>
+        <li>Управление поворотом большим пальцем</li>
+        <li>Плавный подъем и опускание</li>
+        <li>Вращающийся сигнальный маяк</li>
+        <li>Система защиты от наклона</li>
+        <li>Устройство защиты от защемления персонала</li>
+        <li>Нулевой задний свес</li>
+        <li>Линия питания переменного тока к платформе</li>
+        <li>Система датчиков нагрузки платформы</li>
+        <li>Система аварийного опускания</li>
+        <li>Поворот платформы</li>
+        <li>Рабочее освещение платформы</li>
+        <li>Функция самоблокировки ходового двигателя</li>
+      </ul>
+    </div>
+    <div class="btn-group">
+      <button class="btn" onclick="openModal('modal-tb16')">📋 Технические характеристики TB16E / TB16EP</button>
+      <button class="btn btn-outline" onclick="openModal('modal-tb11')">📋 Технические характеристики TB11E–TB22E</button>
+    </div>
+  </div>
+</section>
+
+<!-- Section 02 -->
+<section class="section" id="sec02">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-num">02</div>
+        <h2>Самоходные ножничные подъемные платформы</h2>
+        <p class="section-desc">Компактные и маневренные электрические платформы для работы на высоте в помещениях и на улице.</p>
+      </div>
+    </div>
+    <div class="gallery">
+      <img src="images/S1.jpg" alt="Ножничная платформа S1" loading="lazy">
+      <img src="images/S2.jpg" alt="Ножничная платформа S2" loading="lazy">
+      <img src="images/S3.png" alt="Ножничная платформа S3" loading="lazy">
+      <img src="images/S4.jpg" alt="Ножничная платформа S4" loading="lazy">
+    </div>
+    <div class="features">
+      <h3>Особенности и системы безопасности</h3>
+      <ul>
+        <li>Автоматическая система торможения</li>
+        <li>Пропорциональное управление</li>
+        <li>Звуковой зуммер</li>
+        <li>Выдвижная платформа</li>
+        <li>Автоматическая система защиты от ям</li>
+        <li>Система аварийного опускания</li>
+        <li>Звуковой сигнал</li>
+        <li>Система защиты зарядки</li>
+        <li>Самозакрывающаяся дверь платформы</li>
+        <li>Кнопка экстренной остановки</li>
+        <li>Счетчик времени работы</li>
+        <li>Движение на полной высоте</li>
+        <li>Система защиты гидравлических шлангов от разрыва</li>
+        <li>Опорный стержень для безопасного обслуживания</li>
+        <li>Безследные шины</li>
+        <li>Система диагностики неисправностей</li>
+        <li>Стандартные отверстия для вилочного погрузчика</li>
+        <li>Привод 4×2</li>
+        <li>Система защиты от наклона</li>
+        <li>Складные ограждения</li>
+      </ul>
+    </div>
+    <div class="btn-group">
+      <button class="btn" onclick="openModal('modal-sjw-small')">📋 Характеристики SJW3.5E / SJW4.6E / SJW0606E</button>
+      <button class="btn btn-outline" onclick="openModal('modal-sjw-mid')">📋 Характеристики SJW06E / SJW8E / SJW08BE</button>
+      <button class="btn btn-outline" onclick="openModal('modal-sjw-large')">📋 Характеристики SJW10E / SJW12E / SJW14E</button>
+    </div>
+  </div>
+</section>
+
+<!-- Section 03 -->
+<section class="section" id="sec03">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-num">03</div>
+        <h2>Гусеничные ножничные подъемные платформы</h2>
+        <p class="section-desc">Всесезонное решение с гусеничным шасси для работы на бездорожье, склонах и в условиях ограниченного пространства.</p>
+      </div>
+    </div>
+    <div class="gallery">
+      <img src="images/G1.png" alt="Гусеничная платформа G1" loading="lazy">
+      <img src="images/G2.png" alt="Гусеничная платформа G2" loading="lazy">
+      <img src="images/G3.png" alt="Гусеничная платформа G3" loading="lazy">
+    </div>
+    <div class="features">
+      <h3>Особенности и системы безопасности</h3>
+      <ul>
+        <li>Пропорциональное управление</li>
+        <li>Автоматическая система торможения</li>
+        <li>Звуковой сигнализатор</li>
+        <li>Выдвижная платформа</li>
+        <li>Автоматическая система выравнивания аутригерами</li>
+        <li>Система аварийного опускания</li>
+        <li>Звуковой сигнал</li>
+        <li>Система защиты зарядки</li>
+        <li>Самозакрывающаяся дверь платформы</li>
+        <li>Кнопка экстренной остановки</li>
+        <li>Счетчик времени работы</li>
+        <li>Система защиты гидравлических шлангов от разрыва</li>
+        <li>Опорный стержень для безопасного обслуживания</li>
+        <li>Система диагностики неисправностей</li>
+        <li>Стандартные отверстия для вилочного погрузчика</li>
+        <li>Система защиты от наклона</li>
+        <li>Складные ограждения</li>
+      </ul>
+    </div>
+    <div class="btn-group">
+      <button class="btn" onclick="openModal('modal-sjt')">📋 Технические характеристики SJT06E–SJT12E</button>
+    </div>
+  </div>
+</section>
+
+<!-- Section 04 -->
+<section class="section" id="sec04">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-num">04</div>
+        <h2>Самоходные вертикальные мачтовые подъемники</h2>
+        <p class="section-desc">Идеальны для работ в узких проходах складах, цехах и торговых центрах благодаря компактным габаритам и точному позиционированию.</p>
+      </div>
+    </div>
+    <div class="gallery">
+      <img src="images/M1.png" alt="Мачтовый подъемник M1" loading="lazy">
+      <img src="images/M2.png" alt="Мачтовый подъемник M2" loading="lazy">
+      <img src="images/M3.png" alt="Мачтовый подъемник M3" loading="lazy">
+      <img src="images/M4.png" alt="Мачтовый подъемник M4" loading="lazy">
+    </div>
+    <div class="features">
+      <h3>Особенности и системы безопасности</h3>
+      <ul>
+        <li>Приводной двигатель переменного тока</li>
+        <li>Пропорциональное управление джойстиком</li>
+        <li>Самозакрывающаяся калитка</li>
+        <li>Движение на полной высоте</li>
+        <li>Безследные шины</li>
+        <li>Привод 4×2</li>
+        <li>Автоматическая система торможения</li>
+        <li>Система аварийного опускания</li>
+        <li>Система защиты гидравлических трубок от разрыва</li>
+        <li>Система диагностики неисправностей</li>
+        <li>Сигнализация датчика наклона</li>
+        <li>Звуковая сигнализация при движении</li>
+        <li>Вращение поворотной платформы 345°</li>
+        <li>Звуковой сигнал</li>
+        <li>Счетчик моточасов</li>
+        <li>Система защиты зарядки</li>
+        <li>Проблесковый маяк</li>
+        <li>Защита от случайных операций</li>
+        <li>Индикатор зарядки</li>
+        <li>Ручное освобождение тормоза</li>
+        <li>Точка крепления страховочного троса</li>
+        <li>Точки крепления и подъема</li>
+        <li>Система датчиков нагрузки платформы</li>
+        <li>Кнопка экстренной остановки</li>
+        <li>Поворотная защитная крышка компонентов</li>
+        <li>Освобождение тормоза</li>
+      </ul>
+    </div>
+    <div class="btn-group">
+      <button class="btn" onclick="openModal('modal-mlt')">📋 Технические характеристики MLT 04–MLT 09</button>
+    </div>
+  </div>
+</section>
+
+<!-- Section 05 -->
+<section class="section" id="sec05">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-num">05</div>
+        <h2>Трехколесные подъемные платформы</h2>
+        <p class="section-desc">Мобильные электрические подъемники на базе трехколесного шасси для быстрого перемещения между объектами и работы на улице.</p>
+      </div>
+    </div>
+    <div class="gallery">
+      <img src="images/T1.jpg" alt="Трехколесная платформа T1" loading="lazy">
+      <img src="images/T2.jpg" alt="Трехколесная платформа T2" loading="lazy">
+      <img src="images/T3.jpg" alt="Трехколесная платформа T3" loading="lazy">
+      <img src="images/T4.jpg" alt="Трехколесная платформа T4" loading="lazy">
+    </div>
+    <div class="features">
+      <h3>Особенности</h3>
+      <ul>
+        <li>Аутригеры 100 мм×50 мм</li>
+        <li>Распределительная коробка Delixi</li>
+        <li>Двухстороннее управление</li>
+        <li>Осевой штифт</li>
+        <li>Очистка от ржавчины и нанесение покрытия</li>
+        <li>Амортизаторы модели 43</li>
+        <li>Положительная четырехотверстная коробка передач 1:12</li>
+        <li>Выдвижная платформа</li>
+        <li>Гидравлические тормоза</li>
+      </ul>
+    </div>
+    <div class="btn-group">
+      <button class="btn" onclick="openModal('modal-sjtr')">📋 Технические характеристики SJTR06–SJTR12</button>
+    </div>
+  </div>
+</section>
+
+<!-- Section 06 -->
+<section class="section" id="sec06">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-num">06</div>
+        <h2>Электрические мини-погрузчики с бортовым поворотом</h2>
+        <p class="section-desc">Компактные и маневренные погрузчики для работы в стесненных условиях на складах, в мастерских и на строительных площадках.</p>
+      </div>
+    </div>
+    <div class="gallery">
+      <img src="images/L1.jpg" alt="Мини-погрузчик L1" loading="lazy">
+      <img src="images/L2.jpg" alt="Мини-погрузчик L2" loading="lazy">
+      <img src="images/L3.png" alt="Мини-погрузчик L3" loading="lazy">
+      <img src="images/L4.png" alt="Мини-погрузчик L4" loading="lazy">
+    </div>
+    <div class="features">
+      <h3>Особенности</h3>
+      <ul>
+        <li>Компактные габариты для работы в стесненных пространствах</li>
+        <li>Бортовой поворот для максимальной маневренности</li>
+        <li>Электрический привод — экологичность и низкий уровень шума</li>
+        <li>Прочная конструкция ковша для различных материалов</li>
+        <li>Усиленная рама и защита оператора</li>
+        <li>Применимы в помещениях и на открытых площадках</li>
+      </ul>
+    </div>
+    <p style="color: var(--text-light); margin-top: 12px;">Технические характеристики уточняйте у официального представителя.</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p><strong>ООО "ВИРА"</strong> — официальный представитель Shandong Longqing Heavy Industry Co., Ltd.</p>
+    <p>Тел.: +7(423)256-47-21 &nbsp;|&nbsp; Email: virare@mail.ru</p>
+    <p style="margin-top: 12px; opacity: 0.6;">© 2026 Все права защищены.</p>
+  </div>
+</footer>
+
+<!-- Modals -->
+<div class="modal-overlay" id="modal-tb16" onclick="closeModalOnBackdrop(event, 'modal-tb16')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Технические характеристики — TB16E / TB16EP</h3>
+      <button class="modal-close" onclick="closeModal('modal-tb16')">&times;</button>
+    </div>
+    <div class="modal-body"><div class="table-wrapper"><table class="spec-table"><caption>Модели TB16E и TB16EP</caption><thead><tr><th>Модель</th><th>TB16E</th><th>TB16EP</th></tr></thead><tbody><tr><td>Максимальная рабочая высота</td><td>16 м</td><td>16 м</td></tr><tr><td>Максимальная высота платформы</td><td>13,7 м</td><td>13,7 м</td></tr><tr><td>Максимальный горизонтальный вылет</td><td>7,4 м</td><td>7,4 м</td></tr><tr><td>Максимальная высота преодоления препятствий</td><td>7,5 м</td><td>7,5 м</td></tr><tr><td>Длина платформы</td><td>0,92 м</td><td>0,92 м</td></tr><tr><td>Ширина платформы</td><td>1,8 м</td><td>1,8 м</td></tr><tr><td>Общая высота (в сложенном состоянии)</td><td>2 м</td><td>2 м</td></tr><tr><td>Общая длина (в сложенном состоянии)</td><td>6,6 м</td><td>6,6 м</td></tr><tr><td>Общая ширина машины</td><td>1,75 м</td><td>1,75 м</td></tr><tr><td>Колесная база</td><td>2 м</td><td>2 м</td></tr><tr><td>Дорожный просвет</td><td>0,22 м</td><td>0,22 м</td></tr><tr><td>Максимальная грузоподъемность</td><td>230 кг</td><td>230 кг</td></tr><tr><td>Поворот платформы</td><td>±90°</td><td>±90°</td></tr><tr><td>Вращение поворотной платформы</td><td>355°</td><td>355°</td></tr><tr><td>Скорость подъема рабочей платформы</td><td>85-100 с</td><td>85-100 с</td></tr><tr><td>Скорость опускания рабочей платформы</td><td>70-85 с</td><td>70-85 с</td></tr><tr><td>Максимальная скорость движения (в сложенном состоянии)</td><td>5 км/ч</td><td>5 км/ч</td></tr><tr><td>Максимальная скорость движения (в поднятом состоянии)</td><td>0,8 км/ч</td><td>0,8 км/ч</td></tr><tr><td>Способность преодоления подъемов (полный привод)</td><td>30%</td><td>30%</td></tr><tr><td>Допустимый угол наклона при работе</td><td>5°</td><td>5°</td></tr><tr><td>Шины (заполненные)</td><td>240/55D17.5</td><td>240/55D17.5</td></tr><tr><td>Привод × Управление</td><td>2WD×2WS</td><td>2WD×2WS</td></tr><tr><td>Характеристики аккумулятора</td><td>48V/314Ah (литиевый)</td><td>48V/450Ah (литиевый)</td></tr><tr><td>Зарядное устройство</td><td>48V/50A</td><td>48V/50A</td></tr><tr><td>Рабочее напряжение</td><td>12V DC</td><td>12V DC</td></tr><tr><td>Бак гидравлической системы</td><td>20 л</td><td>20 л</td></tr><tr><td>Вес</td><td>6650 кг</td><td>6650 кг</td></tr></tbody></table></div></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-tb11" onclick="closeModalOnBackdrop(event, 'modal-tb11')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Технические характеристики — TB11E, TB12E, TB14E, TB18E, TB20E, TB22E</h3>
+      <button class="modal-close" onclick="closeModal('modal-tb11')">&times;</button>
+    </div>
+    <div class="modal-body"><div class="table-wrapper"><table class="spec-table"><caption>Модели TB11E, TB12E, TB14E, TB18E, TB20E, TB22E</caption><thead><tr><th>Модель</th><th>TB11E</th><th>TB12E</th><th>TB14E</th><th>TB18E</th><th>TB20E</th><th>TB22E</th></tr></thead><tbody><tr><td>Максимальная рабочая высота</td><td>11,5 м</td><td>12,52 м</td><td>14,2 м</td><td>17,7 м</td><td>20,2 м</td><td>22,5 м</td></tr><tr><td>Максимальная высота платформы</td><td>9,5 м</td><td>10,52 м</td><td>12,2 м</td><td>15,7 м</td><td>18,2 м</td><td>20,5 м</td></tr><tr><td>Максимальный горизонтальный вылет</td><td>4,5 м</td><td>4,65 м</td><td>6,5 м</td><td>8,9 м</td><td>11,1 м</td><td>11,8 м</td></tr><tr><td>Максимальная высота преодоления</td><td>6,2 м</td><td>6,5 м</td><td>6,2 м</td><td>7,3 м</td><td>8,0 м</td><td>9,4 м</td></tr><tr><td>Длина платформы</td><td>1,4 м</td><td>1,4 м</td><td>1,2 м</td><td>1,4 м</td><td>1,8 м</td><td>1,8 м</td></tr><tr><td>Ширина платформы</td><td>0,7 м</td><td>0,7 м</td><td>0,7 м</td><td>0,76 м</td><td>0,76 м</td><td>0,76 м</td></tr><tr><td>Общая высота (сложенная)</td><td>2,0 м</td><td>2,0 м</td><td>1,98 м</td><td>2,0 м</td><td>2,38 м</td><td>2,38 м</td></tr><tr><td>Общая длина (сложенная)</td><td>5,2 м</td><td>5,6 м</td><td>5,6 м</td><td>7,2 м</td><td>8,49 м</td><td>8,99 м</td></tr><tr><td>Общая ширина машины</td><td>1,27 м</td><td>1,50 м</td><td>1,68 м</td><td>1,90 м</td><td>2,49 м</td><td>2,49 м</td></tr><tr><td>Колесная база</td><td>1,75 м</td><td>1,95 м</td><td>2,00 м</td><td>2,0 м</td><td>2,5 м</td><td>2,5 м</td></tr><tr><td>Дорожный просвет</td><td>0,14 м</td><td>0,14 м</td><td>0,25 м</td><td>0,25 м</td><td>0,3 м</td><td>0,3 м</td></tr><tr><td>Максимальная грузоподъемность</td><td>200 кг</td><td>200 кг</td><td>230 кг</td><td>230 кг</td><td>230/350 кг</td><td>230/350 кг</td></tr><tr><td>Поворот платформы</td><td>±80°</td><td>±80°</td><td>±70°</td><td>±80°</td><td>±80°</td><td>±80°</td></tr><tr><td>Вращение поворотной платформы</td><td>355°</td><td>355°</td><td>355°</td><td>355°</td><td>360° непрерывно</td><td>360° непрерывно</td></tr><tr><td>Макс. скорость движения (сложенная)</td><td>4,8 км/ч</td><td>4,8 км/ч</td><td>5 км/ч</td><td>5,0 км/ч</td><td>4,8 км/ч</td><td>4,5 км/ч</td></tr><tr><td>Способность преодоления подъемов</td><td>35%</td><td>35%</td><td>30%</td><td>30%</td><td>45%</td><td>40%</td></tr><tr><td>Допустимый угол при работе</td><td>3°</td><td>3°</td><td>3°</td><td>3°</td><td>3°</td><td>3°</td></tr><tr><td>Шины (заполненные)</td><td>22×7×17</td><td>27×7×17</td><td>28×9-15</td><td>250-15</td><td>33×12-20</td><td>33×12-20</td></tr><tr><td>Привод × Управление</td><td>2×2</td><td>2×2</td><td>2×2</td><td>2×2</td><td>4×2</td><td>4×2</td></tr><tr><td>Характеристики аккумулятора</td><td>48V/320Ah</td><td>48V/320Ah</td><td>48V/220Ah</td><td>48V/320Ah</td><td>48V/420Ah</td><td>48V/420Ah</td></tr><tr><td>Зарядное устройство</td><td>48V/35A</td><td>48V/35A</td><td>48V/20A</td><td>48V/35A</td><td>48V/60A</td><td>48V/60A</td></tr><tr><td>Рабочее напряжение</td><td>24V</td><td>24V</td><td>25V</td><td>27V</td><td>28V</td><td>24V</td></tr><tr><td>Бак гидравлической системы</td><td>20 л</td><td>20 л</td><td>20 л</td><td>45 л</td><td>105 л</td><td>105 л</td></tr><tr><td>Вес</td><td>4800 кг</td><td>4800 кг</td><td>4320 кг</td><td>6630 кг</td><td>9100 кг</td><td>10000 кг</td></tr></tbody></table></div></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-sjw-small" onclick="closeModalOnBackdrop(event, 'modal-sjw-small')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Технические характеристики — SJW3.5E, SJW4.6E, SJW0606E</h3>
+      <button class="modal-close" onclick="closeModal('modal-sjw-small')">&times;</button>
+    </div>
+    <div class="modal-body"><div class="table-wrapper"><table class="spec-table"><caption>Модели SJW3.5E, SJW4.6E, SJW0606E</caption><thead><tr><th>Модель</th><th>SJW3.5E</th><th>SJW4.6E</th><th>SJW0606E</th></tr></thead><tbody><tr><td>Максимальная рабочая высота</td><td>5,6 м</td><td>6,6 м</td><td>7,8 м</td></tr><tr><td>Максимальная высота платформы</td><td>3,5 м</td><td>4,6 м</td><td>5,8 м</td></tr><tr><td>Безопасная рабочая нагрузка</td><td>240 кг</td><td>200 кг</td><td>230 кг</td></tr><tr><td>Безопасная рабочая нагрузка выдвижной платформы</td><td>115 кг</td><td>115 кг</td><td>110 кг</td></tr><tr><td>Размеры рабочей платформы (Д×Ш×В)</td><td>1,37×0,716×1,23 м</td><td>1,37×0,716×1,23 м</td><td>1,68×0,74×1,1 м</td></tr><tr><td>Общие размеры (Д×Ш×В / ограждение не сложено)</td><td>1,483×0,83×2,01 м</td><td>1,483×0,83×2,11 м</td><td>1,86×0,8×2,16 м</td></tr><tr><td>Общие размеры (Д×Ш×В / ограждение сложено)</td><td>1,483×0,83×1,65 м</td><td>1,483×0,83×1,74 м</td><td>1,86×0,8×1,755 м</td></tr><tr><td>Размер выдвижения платформы</td><td>0,6 м</td><td>0,6 м</td><td>0,9 м</td></tr><tr><td>Минимальный дорожный просвет (защита от ям / убрана)</td><td>33/55 мм</td><td>33/55 мм</td><td>0,1/0,02 м</td></tr><tr><td>Колесная база</td><td>1,138 м</td><td>1,138 м</td><td>1,43 м</td></tr><tr><td>Радиус поворота (внутреннее колесо)</td><td>0,45 м</td><td>0,45 м</td><td>0,3/1,75 м</td></tr><tr><td>Подъемный двигатель</td><td>DC24V/1,2 кВт</td><td>DC24V/1,2 кВт</td><td>24V/3,3 кВт</td></tr><tr><td>Ходовой двигатель в сборе</td><td>DC24V/0,45 кВт</td><td>DC24V/0,45 кВт</td><td>—</td></tr><tr><td>Время подъема/опускания (сек)</td><td>35/40</td><td>35/40</td><td>16/28</td></tr><tr><td>Скорость движения машины (в сложенном состоянии)</td><td>3,5 км/ч</td><td>3,5 км/ч</td><td>3,8 км/ч</td></tr><tr><td>Скорость движения машины (в поднятом состоянии)</td><td>0,8 км/ч</td><td>0,8 км/ч</td><td>0,8 км/ч</td></tr><tr><td>Аккумуляторная батарея</td><td>2×12V/100Ah</td><td>2×12V/100Ah</td><td>4×6V/200AH</td></tr><tr><td>Зарядное устройство</td><td>24V/15A</td><td>24V/15A</td><td>24V/30A</td></tr><tr><td>Максимальная способность преодоления подъемов</td><td>25%</td><td>25%</td><td>25%</td></tr><tr><td>Максимально допустимый угол при работе</td><td>1,5°/3°</td><td>1,5°/3°</td><td>1,5°/3°</td></tr><tr><td>Шины</td><td>Φ280×76 мм</td><td>Φ280×76 мм</td><td>Безследные цельные Φ305×100 мм</td></tr><tr><td>Общий вес машины</td><td>780 кг</td><td>830 кг</td><td>1450 кг</td></tr></tbody></table></div></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-sjw-mid" onclick="closeModalOnBackdrop(event, 'modal-sjw-mid')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Технические характеристики — SJW06E, SJW8E, SJW08BE</h3>
+      <button class="modal-close" onclick="closeModal('modal-sjw-mid')">&times;</button>
+    </div>
+    <div class="modal-body"><div class="table-wrapper"><table class="spec-table"><caption>Модели SJW06E, SJW8E, SJW08BE</caption><thead><tr><th>Модель Model</th><th>SJW06E</th><th>SJW8E</th><th>SJW08BE</th></tr></thead><tbody><tr><td>Максимальная рабочая высота</td><td>8 м</td><td>10 м</td><td>10 м</td></tr><tr><td>Максимальная высота платформы</td><td>6 м</td><td>8 м</td><td>8 м</td></tr><tr><td>Безопасная рабочая нагрузка</td><td>450 кг</td><td>450 кг</td><td>320 кг</td></tr><tr><td>Безопасная рабочая нагрузка выдвижной платформы</td><td>110 кг</td><td>110 кг</td><td>110 кг</td></tr><tr><td>Размеры рабочей платформы (Д×Ш×В)</td><td>2,264×1,13×1,2 м</td><td>2,264×1,13×1,2 м</td><td>2,273×0,81×1,2 м</td></tr><tr><td>Общие размеры (Д×Ш×В / ограждение не сложено)</td><td>2,49×1,182×2,175 м</td><td>2,49×1,182×2,305 м</td><td>2,477×0,85×2,325 м</td></tr><tr><td>Общие размеры (Д×Ш×В / ограждение сложено)</td><td>2,49×1,182×1,65 м</td><td>2,49×1,182×1,78 м</td><td>2,477×0,85×1,846 м</td></tr><tr><td>Размер выдвижения платформы</td><td>0,9 м</td><td>0,9 м</td><td>0,9 м</td></tr><tr><td>Минимальный дорожный просвет (защита от ям / убрана)</td><td>0,1/0,02 м</td><td>0,1/0,02 м</td><td>0,1/0,02 м</td></tr><tr><td>Колесная база</td><td>1,90 м</td><td>1,90 м</td><td>1,90 м</td></tr><tr><td>Радиус поворота (внутреннее колесо)</td><td>0/2,35 м</td><td>0/2,35 м</td><td>0/2,35 м</td></tr><tr><td>Подъемный двигатель</td><td>24V/3,3 кВт</td><td>24V/3,3 кВт</td><td>24V/3,3 кВт</td></tr><tr><td>Ходовой двигатель в сборе</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Время подъема/опускания (сек)</td><td>35/40</td><td>35/40</td><td>31/40</td></tr><tr><td>Скорость движения машины (в сложенном состоянии)</td><td>3,5 км/ч</td><td>3,5 км/ч</td><td>3,5 км/ч</td></tr><tr><td>Скорость движения машины (в поднятом состоянии)</td><td>0,8 км/ч</td><td>0,8 км/ч</td><td>Нет</td></tr><tr><td>Аккумуляторная батарея</td><td>4×6V/200Ah</td><td>4×6V/200Ah</td><td>4×6V/200Ah</td></tr><tr><td>Зарядное устройство</td><td>24V/30A</td><td>24V/30A</td><td>24V/30A</td></tr><tr><td>Максимальная способность преодоления подъемов</td><td>25%</td><td>25%</td><td>25%</td></tr><tr><td>Максимально допустимый угол при работе</td><td>1,5°/3°</td><td>1,5°/3°</td><td>1,5°/3°</td></tr><tr><td>Шины</td><td>Φ381×127 мм</td><td>Φ381×127 мм</td><td>Φ381×127 мм</td></tr><tr><td>Общий вес машины</td><td>1930 кг</td><td>2090 кг</td><td>2108 кг</td></tr></tbody></table></div></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-sjw-large" onclick="closeModalOnBackdrop(event, 'modal-sjw-large')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Технические характеристики — SJW10E, SJW12E, SJW14E</h3>
+      <button class="modal-close" onclick="closeModal('modal-sjw-large')">&times;</button>
+    </div>
+    <div class="modal-body"><div class="table-wrapper"><table class="spec-table"><caption>Модели SJW10E, SJW12E, SJW14E</caption><thead><tr><th>Модель Model</th><th>SJW10E</th><th>SJW12E</th><th>SJW14E</th></tr></thead><tbody><tr><td>Максимальная рабочая высота</td><td>12 м</td><td>13,85 м</td><td>15,8 м</td></tr><tr><td>Максимальная высота платформы</td><td>10 м</td><td>11,85 м</td><td>13,8 м</td></tr><tr><td>Безопасная рабочая нагрузка</td><td>320 кг</td><td>320 кг</td><td>230 кг</td></tr><tr><td>Безопасная рабочая нагрузка выдвижной платформы</td><td>110 кг</td><td>110 кг</td><td>110 кг</td></tr><tr><td>Размеры рабочей платформы (Д×Ш×В)</td><td>2,264×1,13×1,2 м</td><td>2,264×1,13×1,2 м</td><td>2,636×1,13×1,2 м</td></tr><tr><td>Общие размеры (Д×Ш×В / ограждение не сложено)</td><td>2,49×1,182×2,435 м</td><td>2,49×1,182×2,565 м</td><td>2,85×1,405×2,58 м</td></tr><tr><td>Общие размеры (Д×Ш×В / ограждение сложено)</td><td>2,49×1,182×1,91 м</td><td>2,49×1,182×2,04 м</td><td>2,85×1,405×2,05 м</td></tr><tr><td>Размер выдвижения платформы</td><td>0,9 м</td><td>0,9 м</td><td>0,9 м</td></tr><tr><td>Минимальный дорожный просвет (защита от ям / убрана)</td><td>0,1/0,02 м</td><td>0,1/0,02 м</td><td>0,1/0,02 м</td></tr><tr><td>Колесная база</td><td>1,90 м</td><td>1,90 м</td><td>2,24 м</td></tr><tr><td>Радиус поворота (внутреннее колесо)</td><td>0/2,35 м</td><td>0/2,35 м</td><td>0/2,5 м</td></tr><tr><td>Подъемный двигатель</td><td>24V/4,5 кВт</td><td>24V/4,5 кВт</td><td>24V/4,5 кВт</td></tr><tr><td>Ходовой двигатель в сборе</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Время подъема/опускания (сек)</td><td>58/48</td><td>65/60</td><td>80/65</td></tr><tr><td>Скорость движения машины (в сложенном состоянии)</td><td>3,5 км/ч</td><td>3,5 км/ч</td><td>3,5 км/ч</td></tr><tr><td>Скорость движения машины (в поднятом состоянии)</td><td>0,8 км/ч</td><td>0,8 км/ч</td><td>0,8 км/ч</td></tr><tr><td>Аккумуляторная батарея</td><td>4×6V/200Ah</td><td>4×6V/200Ah</td><td>4×6V/225Ah</td></tr><tr><td>Зарядное устройство</td><td>24V/30A</td><td>24V/30A</td><td>24V/30A</td></tr><tr><td>Максимальная способность преодоления подъемов</td><td>25%</td><td>25%</td><td>25%</td></tr><tr><td>Максимально допустимый угол при работе</td><td>1,5°/3°</td><td>1,5°/3°</td><td>1,5°/3°</td></tr><tr><td>Шины</td><td>Φ381×127 мм</td><td>Φ381×127 мм</td><td>Φ381×127 мм</td></tr><tr><td>Общий вес машины</td><td>2400 кг</td><td>2850 кг</td><td>3616 кг</td></tr></tbody></table></div></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-sjt" onclick="closeModalOnBackdrop(event, 'modal-sjt')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Технические характеристики — SJT06E, SJT08E, SJT10E, SJT12E</h3>
+      <button class="modal-close" onclick="closeModal('modal-sjt')">&times;</button>
+    </div>
+    <div class="modal-body"><div class="table-wrapper"><table class="spec-table"><caption>Модели SJT06E, SJT08E, SJT10E, SJT12E</caption><thead><tr><th>Модель</th><th>SJT06E</th><th>SJT08E</th><th>SJT10E</th><th>SJT12E</th></tr></thead><tbody><tr><td>Максимальная рабочая высота</td><td>8 м</td><td>10 м</td><td>12 м</td><td>13,85 м</td></tr><tr><td>Максимальная высота платформы</td><td>6 м</td><td>8 м</td><td>10 м</td><td>11,85 м</td></tr><tr><td>Безопасная рабочая нагрузка (SWL)</td><td>450 кг</td><td>450 кг</td><td>320 кг</td><td>320 кг</td></tr><tr><td>Безопасная рабочая нагрузка выдвижной платформы</td><td>110 кг</td><td>110 кг</td><td>110 кг</td><td>110 кг</td></tr><tr><td>Размеры рабочей платформы (Д×Ш×В)</td><td>2,264×1,13×1,21 м</td><td>2,264×1,13×1,21 м</td><td>2,264×1,13×1,21 м</td><td>2,264×1,13×1,21 м</td></tr><tr><td>Общие размеры (Д×Ш×В) — ограждение не сложено</td><td>2,881×1,688×2,275 м</td><td>2,881×1,688×2,41 м</td><td>2,881×1,688×2,545 м</td><td>2,881×1,688×2,68 м</td></tr><tr><td>Общие размеры (Д×Ш×В) — ограждение сложено</td><td>2,881×1,688×1,745 м</td><td>2,881×1,688×1,88 м</td><td>2,881×1,688×2,015 м</td><td>2,881×1,688×2,15 м</td></tr><tr><td>Размер выдвижения платформы</td><td>0,9 м</td><td>0,9 м</td><td>0,9 м</td><td>0,9 м</td></tr><tr><td>Минимальный дорожный просвет</td><td>0,13 м</td><td>0,13 м</td><td>0,13 м</td><td>0,13 м</td></tr><tr><td>Радиус поворота</td><td>Поворот на месте</td><td>Поворот на месте</td><td>Поворот на месте</td><td>Поворот на месте</td></tr><tr><td>Ходовой/Приводной двигатель</td><td>48V/4,0 кВт</td><td>48V/4,0 кВт</td><td>48V/4,0 кВт</td><td>48V/4,0 кВт</td></tr><tr><td>Подъемный/Приводной двигатель</td><td>48V/3,42 кВт</td><td>48V/3,42 кВт</td><td>48V/3,42 кВт</td><td>48V/3,42 кВт</td></tr><tr><td>Время подъема/опускания (сек)</td><td>65/60</td><td>65/60</td><td>65/60</td><td>65/60</td></tr><tr><td>Скорость движения машины (в сложенном состоянии)</td><td>3,5 км/ч</td><td>3,5 км/ч</td><td>3,5 км/ч</td><td>3,5 км/ч</td></tr><tr><td>Аккумуляторная батарея</td><td>8×6V/200Ah</td><td>8×6V/200Ah</td><td>8×6V/200Ah</td><td>8×6V/200Ah</td></tr><tr><td>Зарядное устройство</td><td>48V/30A</td><td>48V/30A</td><td>48V/30A</td><td>48V/30A</td></tr><tr><td>Максимальная способность преодоления подъемов</td><td>25%</td><td>25%</td><td>25%</td><td>25%</td></tr><tr><td>Максимально допустимый угол при работе</td><td>1,5°/3°</td><td>1,5°/3°</td><td>1,5°/3°</td><td>1,5°/3°</td></tr><tr><td>Гусеничное шасси</td><td>SDE35-Z230L</td><td>SDE35-Z230L</td><td>SDE35-Z230L</td><td>SDE35-Z230L</td></tr><tr><td>Общий вес машины</td><td>3166 кг</td><td>3300 кг</td><td>3600 кг</td><td>3700 кг</td></tr></tbody></table></div></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-mlt" onclick="closeModalOnBackdrop(event, 'modal-mlt')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Технические характеристики — MLT 04, MLT 05, MLT 06, MLT 09</h3>
+      <button class="modal-close" onclick="closeModal('modal-mlt')">&times;</button>
+    </div>
+    <div class="modal-body"><div class="table-wrapper"><table class="spec-table"><caption>Модели MLT 04, MLT 05, MLT 06, MLT 09</caption><thead><tr><th>Модель</th><th>MLT 04</th><th>MLT 05</th><th>MLT 06</th><th>MLT 09</th></tr></thead><tbody><tr><td>Максимальная рабочая высота</td><td>5,6 м</td><td>6,8 м</td><td>8 м</td><td>11,2 м</td></tr><tr><td>Максимальная высота платформы</td><td>3,6 м</td><td>4,8 м</td><td>6 м</td><td>9,2 м</td></tr><tr><td>Грузоподъемность платформы</td><td>227 кг</td><td>227 кг</td><td>159 кг</td><td>200 кг</td></tr><tr><td>Грузоподъемность выдвижной платформы</td><td>114 кг</td><td>114 кг</td><td>114 кг</td><td>0</td></tr><tr><td>Общая длина</td><td>1,36 м</td><td>1,36 м</td><td>1,36 м</td><td>2,53 м</td></tr><tr><td>Общая ширина</td><td>0,76 м</td><td>0,76 м</td><td>0,81 м</td><td>1,0 м</td></tr><tr><td>Общая высота</td><td>1,7 м</td><td>1,98 м</td><td>1,98 м</td><td>1,99 м</td></tr><tr><td>Размеры платформы</td><td>1,28×0,70 м</td><td>1,28×0,70 м</td><td>1,28×0,70 м</td><td>0,62×0,87 м</td></tr><tr><td>Длина выдвижной платформы</td><td>0,51 м</td><td>0,51 м</td><td>0,51 м</td><td>—</td></tr><tr><td>Колесная база</td><td>1,04 м</td><td>1,04 м</td><td>1,04 м</td><td>1,22 м</td></tr><tr><td>Минимальный внутренний радиус поворота</td><td>0,3 м</td><td>0,3 м</td><td>0,3 м</td><td>0,23 м</td></tr><tr><td>Минимальный внешний радиус поворота</td><td>1,4 м</td><td>1,4 м</td><td>1,4 м</td><td>1,65 м</td></tr><tr><td>Скорость движения (в сложенном состоянии)</td><td>4 км/ч</td><td>4 км/ч</td><td>4 км/ч</td><td>4,5 км/ч</td></tr><tr><td>Скорость движения (в поднятом состоянии)</td><td>1,1 км/ч</td><td>1,1 км/ч</td><td>1,1 км/ч</td><td>0,5 км/ч</td></tr><tr><td>Скорость подъема/опускания</td><td>31/32 сек</td><td>41,5/42 сек</td><td>52/53 сек</td><td>42/38 сек</td></tr><tr><td>Максимальная способность преодоления подъемов</td><td>25%</td><td>25%</td><td>25%</td><td>25%</td></tr><tr><td>Приводные шины</td><td>Φ305×100 мм</td><td>Φ305×100 мм</td><td>Φ305×100 мм</td><td>Φ381×127 мм</td></tr><tr><td>Приводные двигатели</td><td>2×24VDC/0,5 кВт</td><td>2×24VDC/0,5 кВт</td><td>2×24VDC/0,5 кВт</td><td>24V/0,9 кВт</td></tr><tr><td>Подъемный двигатель</td><td>24VDC/1,2 кВт</td><td>24VDC/1,2 кВт</td><td>24VDC/1,2 кВт</td><td>24V/3 кВт</td></tr><tr><td>Аккумулятор</td><td>2×12V/100Ah</td><td>2×12V/100Ah</td><td>2×12V/100Ah</td><td>24V/240Ah</td></tr><tr><td>Зарядное устройство</td><td>24V/15A</td><td>24V/15A</td><td>24V/15A</td><td>24V/30A</td></tr><tr><td>Вес</td><td>810 кг</td><td>980 кг</td><td>1160 кг</td><td>2950 кг</td></tr></tbody></table></div></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-sjtr" onclick="closeModalOnBackdrop(event, 'modal-sjtr')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Технические характеристики — SJTR06, SJTR08, SJTR10, SJTR11.8, SJTR12</h3>
+      <button class="modal-close" onclick="closeModal('modal-sjtr')">&times;</button>
+    </div>
+    <div class="modal-body"><div class="table-wrapper"><table class="spec-table"><caption>Модели SJTR06, SJTR08, SJTR10, SJTR11.8, SJTR12</caption><thead><tr><th>Модель Model</th><th>SJTR06</th><th>SJTR08</th><th>SJTR10</th><th>SJTR11.8</th><th>SJTR12</th></tr></thead><tbody><tr><td>Максимальная высота подъема</td><td>6 м</td><td>8 м</td><td>10 м</td><td>11,8 м</td><td>12 м</td></tr><tr><td>Размер платформы</td><td>2060×1000 мм</td><td>2060×1000 мм</td><td>2060×1000 мм</td><td>2070×1000 мм</td><td>2300×1140 мм</td></tr><tr><td>Выдвижная платформа</td><td>800 мм</td><td>800 мм</td><td>800 мм</td><td>800 мм</td><td>900 мм</td></tr><tr><td>Грузоподъемность выдвижной платформы</td><td>100 кг</td><td>100 кг</td><td>100 кг</td><td>100 кг</td><td>100 кг</td></tr><tr><td>Размер рамы</td><td>60×120×2,75 мм</td><td>60×120×2,75 мм</td><td>60×120×2,75 мм</td><td>60×120×2,75 мм</td><td>60×120×2,75 мм</td></tr><tr><td>Размер рамы из квадратной трубы</td><td>2050×1080 мм</td><td>2050×1080 мм</td><td>2050×1080 мм</td><td>2050×1080 мм</td><td>2300×1090 мм</td></tr><tr><td>Номинальная грузоподъемность</td><td>300 кг</td><td>300 кг</td><td>300 кг</td><td>300 кг</td><td>500 кг</td></tr><tr><td>Общие размеры (размер со сложенным ограждением)</td><td>3700×1400×1900 мм</td><td>3700×1400×2020 мм</td><td>3700×1400×2140 мм</td><td>3700×1400×2300 мм</td><td>3920×1580×2100 мм</td></tr><tr><td>Вес оборудования</td><td>1500 кг</td><td>1600 кг</td><td>1800 кг</td><td>1900 кг</td><td>2230 кг</td></tr><tr><td>Скорость подъема</td><td>4-6 м/мин</td><td>4-6 м/мин</td><td>4-6 м/мин</td><td>4-6 м/мин</td><td>4-6 м/мин</td></tr><tr><td>Аккумулятор</td><td>12V80Ah × 5 шт.</td><td>12V80Ah × 5 шт.</td><td>12V80Ah × 5 шт.</td><td>12V80Ah × 5 шт.</td><td>12V103Ah × 6 шт.</td></tr><tr><td>Шины</td><td>500-12 пневматические</td><td>500-12 пневматические</td><td>500-12 пневматические</td><td>500-12 пневматические</td><td>Передние 500-12 Задние 550-13 пневматические</td></tr></tbody></table></div></div>
+  </div>
+</div>
+
+<script>
+function openModal(id) {
+  document.getElementById(id).classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+  document.body.style.overflow = '';
+}
+function closeModalOnBackdrop(e, id) {
+  if (e.target === document.getElementById(id)) closeModal(id);
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.active').forEach(m => {
+      m.classList.remove('active');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-container a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    const top = window.scrollY;
+    const offset = sec.offsetTop - 100;
+    const height = sec.offsetHeight;
+    if (top >= offset && top < offset + height) current = sec.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+# robots.txt для https://longqing.ru/
+# ООО «ВИРА» — официальный представитель Shenyang Bao Quan и Shandong Longqing
+# Создано: 2026-08-07
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /*.pdf$
+Allow: /*.pdf$
+# PDF-брошюры кранов — индексируем (полезно для брендовых запросов)
+
+# Яндекс — отдельные правила для основного бота
+User-agent: Yandex
+Allow: /
+Disallow: /admin/
+Disallow: /cgi-bin/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&gclid&yclid&fbclid
+
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /cgi-bin/
+
+# Sitemap location
+Sitemap: https://longqing.ru/sitemap.xml
+Host: longqing.ru
+
+# Crawl-delay для снижения нагрузки на сервер
+Crawl-delay: 1
